@@ -6,6 +6,7 @@ public class AfishaManager {
 
 private Movie[] movies = new Movie[0];
 
+
     public void add(Movie item) {
         // создаём новый массив размером на единицу больше
         int length = movies.length + 1;
