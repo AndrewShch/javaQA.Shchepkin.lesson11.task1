@@ -1,20 +1,19 @@
 package ru.netology.manager;
 
 
-
-
 import ru.netology.domain.Movie;
 
 public class AfishaManager {
 
-private Movie[] movies = new Movie[0];
-private int amountMovies = 10;
+    private Movie[] movies = new Movie[0];
+    private int amountMovies = 10;
 
-public AfishaManager(){}
+    public AfishaManager() {
+    }
 
-public AfishaManager(int amountMovies){
-    this.amountMovies = amountMovies;
-}
+    public AfishaManager(int amountMovies) {
+        this.amountMovies = amountMovies;
+    }
 
     public void add(Movie item) {
         int length = movies.length + 1;
@@ -27,10 +26,11 @@ public AfishaManager(int amountMovies){
 
     public Movie[] getAll() {
         int resultLength;
-        if (movies.length < amountMovies)
+        if (movies.length < amountMovies) {
             resultLength = movies.length;
-        else
+        } else {
             resultLength = amountMovies;
+        }
         Movie[] result = new Movie[resultLength];
         for (int i = 0; i < result.length; i++) {
             int index = movies.length - i - 1;
