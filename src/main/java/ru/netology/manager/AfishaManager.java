@@ -1,31 +1,37 @@
 package ru.netology.manager;
 
+
 import ru.netology.domain.Movie;
 
 public class AfishaManager {
 
-private Movie[] movies = new Movie[0];
+    private Movie[] movies = new Movie[0];
+    private int amountMovies = 10;
+
+    public AfishaManager() {
+    }
+
+    public AfishaManager(int amountMovies) {
+        this.amountMovies = amountMovies;
+    }
 
     public void add(Movie item) {
-        // создаём новый массив размером на единицу больше
         int length = movies.length + 1;
         Movie[] tmp = new Movie[length];
-        // itar + tab
-        // копируем поэлементно
-        // for (int i = 0; i < items.length; i++) {
-        //   tmp[i] = items[i];
-        // }
         System.arraycopy(movies, 0, tmp, 0, movies.length);
-        // кладём последним наш элемент
         int lastIndex = tmp.length - 1;
         tmp[lastIndex] = item;
         movies = tmp;
     }
 
     public Movie[] getAll() {
-        Movie[] result = new Movie[movies.length];
-        // перебираем массив в прямом порядке
-        // но кладём в результаты в обратном
+        int resultLength;
+        if (movies.length < amountMovies) {
+            resultLength = movies.length;
+        } else {
+            resultLength = amountMovies;
+        }
+        Movie[] result = new Movie[resultLength];
         for (int i = 0; i < result.length; i++) {
             int index = movies.length - i - 1;
             result[i] = movies[index];
@@ -33,7 +39,6 @@ private Movie[] movies = new Movie[0];
         return result;
     }
 
-    // наивная реализация
     public void removeById(int id) {
         int length = movies.length - 1;
         Movie[] tmp = new Movie[length];
@@ -44,7 +49,6 @@ private Movie[] movies = new Movie[0];
                 index++;
             }
         }
-        // меняем наши элементы
         movies = tmp;
     }
 }
